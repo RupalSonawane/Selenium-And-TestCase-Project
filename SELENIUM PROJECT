@@ -1,0 +1,56 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ProjectSelenium {
+	public static void main(String[] args) throws InterruptedException
+	{
+		System.setProperty("webdriver.chrome.driver","C:\\\\chromedriver_win32\\\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+				driver.get("file:///C:/Users/Rupal/Desktop/Selnium/HTML%20Pages/HTML%20Pages/EventRegistrationPage.html");
+				
+				Select drpTitle = new Select(driver.findElement(By.name("D1")));
+				drpTitle.selectByVisibleText("Ms.");//Enter the title
+				
+				driver.findElement(By.id("txtFName")).sendKeys("Rupal");//Enter the first name
+				
+				driver.findElement(By.id("txtLName")).sendKeys("Sonawane");//Enter the last name
+				
+				driver.findElement(By.id("Text3")).sendKeys("Pen");//Enter the address
+				
+				driver.findElement(By.id("Text4")).sendKeys("Pen");//Enter the city
+				
+				Select drpCountry = new Select(driver.findElement(By.name("D2")));
+				drpCountry.selectByVisibleText("India");//Enter the country name
+			
+				driver.findElement(By.id("Text5")).sendKeys("402107");//Enter the zipcode
+				
+				driver.findElement(By.id("Text6")).sendKeys("rupalsonawane@gmail.com");//Enter the email id
+				
+				Select drpEventName = new Select(driver.findElement(By.name("D3")));
+				drpEventName.selectByVisibleText("Software Testing With MS Test Manager 2012");//Enter the event name
+				
+				driver.findElement(By.id("Text7")).sendKeys("9960045789");//Enter the mobile number
+				
+				Select drpLunch = new Select(driver.findElement(By.name("D4")));
+				drpLunch.selectByVisibleText("Spaghetti");//Enter Food Choice
+				Thread.sleep(1000);
+				driver.findElement(By.id("Submit1")).click();//Register
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("/html/body/form/table/tbody/tr[18]/td[1]/a")).click();//Click on the link
+				Thread.sleep(1000);
+				//New Payment Details
+				driver.findElement(By.id("txtFirstName")).sendKeys("Rupal");//Enter the First Name
+				driver.findElement(By.id("txtLastName")).sendKeys("Sonawane");//Enter the Last Name
+				driver.findElement(By.id("txtDebit")).sendKeys("01239874561");//Enter the Debitcard Number
+				driver.findElement(By.id("txtCvv")).sendKeys("025");//Enter the CVV Number
+				driver.findElement(By.id("txtMonth")).sendKeys("December");//Enter the Expiration Month
+				driver.findElement(By.id("txtYear")).sendKeys("2023");//Enter the Expiration Year
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("/html/body/form/table/tbody/tr[7]/td[1]/a")).click();//Click on Pay
+				
+				String strUrl = driver.getCurrentUrl();
+			      System.out.println("Current Url is:"+ strUrl);
+			    }
+}
